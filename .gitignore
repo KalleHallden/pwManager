@@ -1,0 +1,7 @@
+
+*.exe
+*.pyc
+*database.sql
+*__
+*.log
+*.debug

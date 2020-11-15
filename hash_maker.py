@@ -25,9 +25,9 @@ def password(plaintext, app_name, length):
     chars = []
 
     while len(chars) < length:
-        n = random.randint(0, len(ALPHABET)-1)
+        n = random.randint(0, len(ALPHABET) - 1)
         alpha = ALPHABET[n]
-        n = random.randint(0, len(alpha)-1)
+        n = random.randint(0, len(alpha) - 1)
         chars.append(alpha[n])
 
     return ''.join(chars)

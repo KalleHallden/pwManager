@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS pwmanager;
-use pwmanager;
+CREATE DATABASE IF NOT EXISTS password_manager;
+use password_manager;
 
 CREATE TABLE IF NOT EXISTS accounts (
     password VARCHAR(255),

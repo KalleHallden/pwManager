@@ -15,7 +15,7 @@ def menu():
 
 
 def create():
-    print('Please proivide the name of the site or app you want to generate a password for: ')
+    print('Please provide the name of the site or app you want to generate a password for: ')
     app_name = input()
     print('Please provide a simple password for this site: ')
     plaintext = input()
@@ -35,12 +35,12 @@ def create():
 
 
 def find():
-    print('Please proivide the name of the site or app you want to find the password to: ')
+    print('Please provide the name of the site or app you want to find the password to: ')
     app_name = input()
     find_password(app_name)
 
 
 def find_accounts():
-    print('Please proivide the email that you want to find accounts for: ')
+    print('Please provide the email that you want to find accounts for: ')
     user_email = input()
     find_users(user_email)

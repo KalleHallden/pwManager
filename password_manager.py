@@ -15,7 +15,7 @@ if passw == secret:
 
 else:
     print('no luck')
-    exit() 
+    exit()
 
 choice = menu()
 while choice != 'Q':

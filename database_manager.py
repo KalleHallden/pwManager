@@ -1,5 +1,6 @@
 import psycopg2
 
+
 def store_passwords(password, user_email, username, url, app_name):
     try:
         connection = connect()
@@ -11,12 +12,15 @@ def store_passwords(password, user_email, username, url, app_name):
     except (Exception, psycopg2.Error) as error:
         print(error)
 
+
 def connect():
     try:
-        connection = psycopg2.connect(user='kalle', password='kalle', host='127.0.0.1', database='password_manager')
+        connection = psycopg2.connect(
+            user='kalle', password='kalle', host='127.0.0.1', database='password_manager')
         return connection
     except (Exception, psycopg2.Error) as error:
         print(error)
+
 
 def find_password(app_name):
     try:
@@ -26,13 +30,15 @@ def find_password(app_name):
         cursor.execute(postgres_select_query, app_name)
         connection.commit()
         result = cursor.fetchone()
-        print('Password is: ' )
+        print('Password is: ')
         print(result[0])
-    
+
     except (Exception, psycopg2.Error) as error:
         print(error)
+
+
 def find_users(user_email):
-    data = ('Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ') 
+    data = ('Password: ', 'Email: ', 'Username: ', 'url: ', 'App/Site name: ')
     try:
         connection = connect()
         cursor = connection.cursor()

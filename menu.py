@@ -1,6 +1,7 @@
 from hash_maker import password
 import subprocess 
-from database_manager import store_passwords, find_users, find_password 
+from database_manager import store_passwords, find_users, find_password
+from sys import platform
 
 def menu():
     print('-'*30)
@@ -18,7 +19,13 @@ def create():
    print('Please provide a simple password for this site: ')
    plaintext = input()
    passw = password(plaintext, app_name, 12)
-   subprocess.run('xclip', universal_newlines=True, input=passw)
+   if platform == 'win32':
+       subprocess.run('clip.exe', universal_newlines=True, input=passw,shell=True)
+   elif platform == 'linux' or platform == 'linux2':
+       subprocess.run('xclip', universal_newlines=True, input=passw,shell=True)
+   else:
+       print('Sorry, OS still not compatible')
+       exit()
    print('-'*30)
    print('')
    print('Your password has now been created and copied to your clipboard')

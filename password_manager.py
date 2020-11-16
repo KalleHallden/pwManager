@@ -10,21 +10,26 @@ secret = get_secret_key()
 
 passw = input('Please provide the master password to start using kallemanager3000: ')
 
-if passw == secret:
-    print('You\'re in')
-
-else:
-    print('no luck')
-    exit() 
-
-choice = menu()
-while choice != 'Q':
-    if choice == '1':
-        create()
-    if choice == '2':
-        find_accounts()
-    if choice == '3':
-        find()
-    else:
+def run(a, b):
+    if a == b:
+        print('You\'re in')
         choice = menu()
-exit()
+        while choice != 'Q':
+            if choice == '1':
+                create()
+            if choice == '2':
+                find_accounts()
+            if choice == '3':
+                find()
+            else:
+                choice = menu()
+
+    else:
+        print('no luck')
+        restart = input('would you like to try again (y/n): ')
+        if restart == 'y':
+            run(a, b)
+        else:
+            quit()
+
+run(passw, secret)

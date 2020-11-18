@@ -1,3 +1,4 @@
+from getpass import getpass
 
 from secret import get_secret_key
 from menu import menu, create, find, find_accounts
@@ -8,7 +9,7 @@ from menu import menu, create, find, find_accounts
 
 secret = get_secret_key()
 
-passw = input('Please provide the master password to start using kallemanager3000: ')
+passw = getpass(prompt='Please provide the master password to start using kallemanager3000: ')
 
 if passw == secret:
     print('You\'re in')

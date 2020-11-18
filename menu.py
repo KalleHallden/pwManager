@@ -21,7 +21,7 @@ def create():
    passw = password(plaintext, app_name, 12)
    if platform == 'win32':
        subprocess.run('clip.exe', universal_newlines=True, input=passw,shell=True)
-   elif platform == 'linux' or platform == 'linux2':
+   elif platform.startswith('linux'):
        subprocess.run('xclip', universal_newlines=True, input=passw,shell=True)
    else:
        print('Sorry, OS still not compatible')

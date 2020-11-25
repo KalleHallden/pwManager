@@ -8,6 +8,7 @@ from menu import menu, create, find, find_accounts
 
 
 
+<<<<<<< HEAD
 #this function is run to see whether the programm has already been run and parse data from the config_file.txt file
 def launch():
     config_file = open('config_file.txt','r')
@@ -59,3 +60,28 @@ def run(n,p,a,b,c):
 
 launch()
 run(launch.user_name, launch.password,launch.user,launch.pw_db,launch.dbname)
+=======
+def run(a, b):
+    if a == b:
+        print('You\'re in')
+        choice = menu()
+        while choice != 'Q':
+            if choice == '1':
+                create()
+            if choice == '2':
+                find_accounts()
+            if choice == '3':
+                find()
+            else:
+                choice = menu()
+
+    else:
+        print('no luck')
+        restart = input('would you like to try again (y/n): ')
+        if restart == 'y':
+            run(a, b)
+        else:
+            quit()
+
+run(passw, secret)
+>>>>>>> 5de74ef60bd5876443ea9a03bce98f17b3926c7d

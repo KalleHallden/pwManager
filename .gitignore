@@ -6,3 +6,4 @@ env
 *.log
 *.debug
 secret.py
+config_file.txt

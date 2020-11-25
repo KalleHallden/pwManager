@@ -13,3 +13,6 @@ Todo:
 	- user should get back password, email used, and if applicable username
 
 - create master password
+
+#Config file
+	Create a 'config_file.txt' in the same folder of this programm where you will type <b>0</b> in the first line, then run the code.

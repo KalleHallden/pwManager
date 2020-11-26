@@ -8,7 +8,6 @@ from menu import menu, create, find, find_accounts
 
 
 
-<<<<<<< HEAD
 #this function is run to see whether the programm has already been run and parse data from the config_file.txt file
 def launch():
     config_file = open('config_file.txt','r')
@@ -84,4 +83,4 @@ def run(a, b):
             quit()
 
 run(passw, secret)
->>>>>>> 5de74ef60bd5876443ea9a03bce98f17b3926c7d
+

@@ -1,4 +1,3 @@
-
 #from secret import get_secret_key
 from menu import menu, create, find, find_accounts
 # menu
@@ -59,28 +58,5 @@ def run(n,p,a,b,c):
 
 launch()
 run(launch.user_name, launch.password,launch.user,launch.pw_db,launch.dbname)
-=======
-def run(a, b):
-    if a == b:
-        print('You\'re in')
-        choice = menu()
-        while choice != 'Q':
-            if choice == '1':
-                create()
-            if choice == '2':
-                find_accounts()
-            if choice == '3':
-                find()
-            else:
-                choice = menu()
 
-    else:
-        print('no luck')
-        restart = input('would you like to try again (y/n): ')
-        if restart == 'y':
-            run(a, b)
-        else:
-            quit()
-
-run(passw, secret)
 

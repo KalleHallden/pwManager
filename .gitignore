@@ -8,3 +8,4 @@ env
 .vs
 secret.py
 config_file.txt
+secret.key

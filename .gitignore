@@ -7,5 +7,5 @@ env
 *.debug
 .vs
 secret.py
-config_file.txt
 secret.key
+__pycache__/

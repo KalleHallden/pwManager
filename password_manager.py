@@ -1,6 +1,6 @@
 #importing configs and credentials
-#import update -TODO fix circular import error
 from utils import config
+from update import update
 #from secret import get_secret_key
 from menu import menu, create, find, find_accounts
 #importing the crypto module
@@ -25,43 +25,45 @@ def decrypt_pw(enc_password):
     key = load_key()
     f = Fernet(key)
     decrypted_pw = f.decrypt(enc_password)
-    return decrypted_pw
+    decoded_pw = decrypted_pw.decode()
+    return decoded_pw
 
-# menu
-# 1. create new password for a site
-# 2. find password for a site
-# 3. Find all sites connected to an email
 
 
 #this function is run to see whether the programm has already been run and parse data from the config_file.txt file
-def launch(x):
-    launch.launched = False
-    if launch.launched == x:
+def launch():
+    global launched
+    launched = False
+    if launched == config.islaunched:
         generate_key()
+        global user_name,password,user,pw_db,dbname
         print('Hello dear user! Please enter below the name you want to be called with.')
-        launch.user_name = input('--> ')
-        launch.password = encrypt_pw(input('Enter your password: '))
-        launch.user = input('Enter the name of the user of your data base: ')
-        launch.pw_db = encrypt_pw(input('The password of the data base: '))
-        launch.dbname = input('Finally, the name of the data base: ')
-        config.islaunched = True
+        user_name = input('--> ')
+        password = encrypt_pw(input('Enter your password: '))
+        user = input('Enter the name of the user of your data base: ')
+        pw_db = encrypt_pw(input('The password of the data base: '))
+        dbname = input('Finally, the name of the data base: ')
+        launched = True
+        #==================older version=======================
         #arg = [launched+'\n',launch.user_name+'\n' , launch.password+'\n',launch.user+'\n',launch.pw_db+'\n',launch.dbname]
         #config_file = open('config_file.txt','w+')
         #config_file.writelines(arg)
         #config_file.close
-        config.dbuser = launch.user
-        config.dbname = launch.dbname
-        config.dbpw = launch.pw_db
-        config.user_name = launch.user_name
-        config.password = launch.password
+        #====================================================
+        #global credentials
+        #credentials = [launched,user_name, password,user,pw_db,dbname]
+        #print(globals())
+        #import update
+        args = ["islaunched","user_name","password","dbuser","dbname","dbpw"]
+        credentials = [launched,user_name, password,user,pw_db,dbname]
+        update(args,credentials)
     else:
-        launch.user_name = config.user_name
-        launch.password = config.password
-        launch.user = config.dbuser
-        launch.pw_db = config.dbpw
-        launch.dbname = config.dbname
-    launch.args = [launch.launched,launch.user_name, launch.password,launch.user,launch.pw_db,launch.dbname]
-    return launch.args
+        user_name = config.user_name
+        password = config.password
+        user = config.dbuser
+        pw_db = config.dbpw
+        dbname = config.dbname
+    return launched,user_name, password,user,pw_db,dbname
 
 def run(n,p,a,b,c):
     passw = input(f'Please provide the master password to start using {n}: ')
@@ -83,8 +85,11 @@ def run(n,p,a,b,c):
         else:
             choice = menu()
 
-launch(config.islaunched)
+
+#if  __name__ == "__main__":
+launch()
+#import update
 #debugging
 #print(config.user_name,config.password)
-run(launch.user_name, launch.password,launch.user,launch.pw_db,launch.dbname)
+run(user_name, password,user,pw_db,dbname)
 

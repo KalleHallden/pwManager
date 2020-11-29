@@ -1,14 +1,20 @@
-from app import password_manager
-from utils import config
+#from password_manager import launched,user_name, password,user,pw_db,dbname
+#import password_manager
+#args = ["islaunched","user_name","password","dbuser","dbname","dbpw"]
 
-def update(a,b,c,d,e,f):
-    a = password_manager.launch.args[0]
-    b = password_manager.launch.args[1]
-    c = password_manager.launch.args[2]
-    d = password_manager.launch.args[3]
-    e = password_manager.launch.args[4]
-    f = password_manager.launch.args[5]
-    return a,b,c,d,e,f
-
-new_config = update(*config.arg)
-print(new_config)
+def update(arg,arg2):
+    f = open('utils/config.py','w+')
+    for i in range(len(arg)):
+        if i == 0:
+            f.write(f"{arg[0]} = True\n")
+        else:
+            if type(arg2[i]) == bytes:
+                f.write(f"""{arg[i]} = {arg2[i]}\n""")
+            else:
+                f.write(f"""{arg[i]} = '{arg2[i]}'\n""")
+            if i == 6:
+                break
+    f.close
+#credentials = [launched,user_name, password,user,pw_db,dbname]
+#print(credentials)
+#update(args,credentials)

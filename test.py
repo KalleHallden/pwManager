@@ -1,2 +1,0 @@
-import password_manager
-print (password_manager.credentials)

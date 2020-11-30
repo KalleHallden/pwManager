@@ -5,4 +5,7 @@ env
 *__
 *.log
 *.debug
+.vs
 secret.py
+secret.key
+__pycache__/

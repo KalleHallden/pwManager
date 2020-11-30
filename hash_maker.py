@@ -1,8 +1,9 @@
 from hashlib import sha256
 import random
-from secret import get_secret_key
+#from secret import get_secret_key
 
-SECRET_KEY = get_secret_key()
+
+SECRET_KEY = '1231231230'
 def make_password(plaintext, app_name):
     salt = get_hexdigest(SECRET_KEY, app_name)[:20]
     hsh = get_hexdigest(salt, plaintext)

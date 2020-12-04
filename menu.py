@@ -13,30 +13,23 @@ def menu():
     return input(': ')
 
 def create():
-   print('Please proivide the name of the site or app you want to generate a password for')
-   app_name = input()
-   print('Please provide a simple password for this site: ')
-   plaintext = input()
+   app_name = input('Please proivide the name of the site or app you want to generate a password for: ')
+   plaintext = input('Please provide a simple password for this site: ')
    passw = password(plaintext, app_name, 12)
    subprocess.run('xclip', universal_newlines=True, input=passw)
-   print('-'*30)
-   print('')
-   print('Your password has now been created and copied to your clipboard')
-   print('')
-   print('-' *30)
+   print('-'*30,'\n','Your password has now been created and copied to your clipboard','\n','-' *30)
    user_email = input('Please provide a user email for this app or site')
    username = input('Please provide a username for this app or site (if applicable)')
+   
    if username == None:
        username = ''
    url = input('Please paste the url to the site that you are creating the password for')
    store_passwords(passw, user_email, username, url, app_name)
 
 def find():
-   print('Please proivide the name of the site or app you want to find the password to')
-   app_name = input()
+   app_name = input('Please proivide the name of the site or app you want to find the password: ')
    find_password(app_name)
 
 def find_accounts():
-   print('Please proivide the email that you want to find accounts for')
-   user_email = input() 
+   user_email = input('Please proivide the email that you want to find accounts for:') 
    find_users(user_email)

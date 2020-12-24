@@ -1,5 +1,6 @@
 from hashlib import sha256
 import random
+import string
 from secret import get_secret_key
 
 SECRET_KEY = get_secret_key()
@@ -13,7 +14,7 @@ def get_hexdigest(salt, plaintext):
 
 def password(plaintext, app_name, length):
     raw_hex = make_password(plaintext, app_name)
-    ALPHABET = ('abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTYVWXYZ', '0123456789', '(,._-*~"<>/|!@#$%^&)+=')
+    ALPHABET = string.ascii_letters + string.digits + string.punctuations
 
     num = int(raw_hex, 16)
 

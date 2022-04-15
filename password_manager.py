@@ -21,10 +21,9 @@ choice = menu()
 while choice != 'Q':
     if choice == '1':
         create()
-    if choice == '2':
+    elif choice == '2':
         find_accounts()
-    if choice == '3':
+    elif choice == '3':
         find()
-    else:
-        choice = menu()
+    choice = menu()
 exit()
